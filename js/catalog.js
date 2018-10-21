@@ -29,6 +29,7 @@ function populateForm() {
 function handleSubmit(event) {
   // TODO: Prevent the page from reloading
   event.preventDefault();
+  document.getElementbyId('catalog').reset();
   // Do all the things ... (function calls)
   addSelectedItemToCart();
   cart.saveToLocalStorage();
@@ -66,6 +67,8 @@ function updateCartPreview() {
     ulEl.appendChild(liEl);
   }
 }
+//STRETCH: in cart, whenever something is added, scan for item and increment quantity by new quantity, return to this section and clear all children whenever something new is added.
+
 
 // Set up the "submit" event listener on the form.
 // This is the trigger for the app. When a user "submits" the form, it will
