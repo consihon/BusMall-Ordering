@@ -9,6 +9,7 @@ var cart;
 function loadCart() {
   var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
   cart = new Cart(cartItems);
+  console.log(cart);
 }
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
@@ -25,11 +26,30 @@ function clearCart() {}
 function showCart() {
 
   // TODO: Find the table body
-
+  var tblEl = document.getElementsByTagName('tbody');
   // TODO: Iterate over the items in the cart
-  // TODO: Create a TR
-  // TODO: Create a TD for the delete link, quantity,  and the item
-  // TODO: Add the TR to the TBODY and each of the TD's to the TR
+  for (var i = 0; i<cart.items.length; i++) {
+    // TODO: Create a TR
+    var trEl = document.createElement('tr');
+    tblEl.appendChild(trEl);
+    // TODO: Create a TD for the delete link, quantity,  and the item
+    for (var f = 0; f < 3; f++) {
+      var tdEl = document.createElement('td');
+      // TODO: Add the TR to the TBODY and each of the TD's to the TR
+      if (f === 0){
+        tdEl.textContent = ('X');
+        trEl.appendChild(tdEl);
+      }
+      if (f === 1){
+        tdEl.textContent = (cart.items[i].Product.quantity);
+        trEl.appendChild(tdEl);
+      }
+      if (f === 2){
+        tdEl.textContent = (cart.items[i].Product.name);
+        trEl.appendChild(tdEl);
+      }
+    }
+  }
 
 }
 
